@@ -1,15 +1,7 @@
 
-# coding: utf-8
-
-# In[1]:
-
-
 import pandas as pd
 import os, glob
 from datetime import datetime
-
-
-# In[2]:
 
 
 def ga_merge(input_directory, output_filename):
@@ -20,8 +12,8 @@ def ga_merge(input_directory, output_filename):
     df = pd.DataFrame()
     for file in glob.glob('Analytics ' + '*.csv'):
         file_list.append(file)
-        for i in file_list:
-            df = df.append(pd.read_csv(i, skiprows=5))
+    for i in file_list:
+        df = df.append(pd.read_csv(i, skiprows=5))
 
     date_cov = []
     for i in df['Date']:
@@ -32,4 +24,3 @@ def ga_merge(input_directory, output_filename):
     df.rename(columns={'date_cov':'Date'}, inplace=True)
     df = df.set_index(['Date'])
     df.to_csv(output_filename)
-
