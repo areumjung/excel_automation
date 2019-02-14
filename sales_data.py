@@ -1,24 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[ ]:
-
-
-pwd
-
-
-# In[ ]:
-
-
-cd "C://Users//areum.jung//Desktop//MCK Local//Sales data"
-
-
-# In[ ]:
-
-
-ls
-
-
 # ## Combining All files
 
 # In[83]:
@@ -27,7 +9,7 @@ ls
 import pandas as pd
 import os, glob
 
-def mkc_sales(input_directory):
+def sales(input_directory):
     
     os.chdir(input_directory)
     
@@ -78,25 +60,3 @@ def mkc_sales(input_directory):
         all_sales = all_sales.append(cfv_chr_output)
         
         all_sales.to_csv("output_two//all_sales.csv")
-
-
-# In[84]:
-
-
-mkc_sales("C://Users//areum.jung//Desktop//MCK Local//Sales data//")
-
-
-# ## Exception - Insights Day_ Frank's PDI & CDI (2)
-
-# In[40]:
-
-
-franks = pd.read_excel("C://Users//areum.jung//Desktop//MCK Local//Sales data//exception//Insights Day_ Frank's PDI & CDI (2).xlsx", sheet_name=1, header=7)
-
-franks_var = franks.columns[:2]
-franks_col = franks.columns[2:]
-franks_melt = franks.melt(id_vars=franks_var, value_vars=franks_col, var_name='week', value_name='value')
-franks_melt['week'] = franks_melt['week'].apply(lambda x: x.replace("Week Ending ", ''))
-franks_melt['campaign'] = 
-franks_melt.to_csv("output//Insights Day_ Frank's PDI & CDI (2)_output.csv")
-
